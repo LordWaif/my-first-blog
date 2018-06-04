@@ -17,3 +17,23 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Especialidade(models.Model):
+    Tipo = models.CharField(max_length=50)
+    Salario = models.FloatField()
+    def __str__(self):
+        return self.Tipo
+    
+
+class Medico(models.Model):
+    Especialidade = models.ForeignKey('Especialidade',on_delete=models.CASCADE)
+    Nome = models.CharField(max_length=50)
+    CRM = models.IntegerField(primary_key=True)
+    CPF = models.CharField(max_length=11)
+    Data_de_Nascimento = models.DateField()
+    Email = models.EmailField()
+
+    def __str__(self):
+        return self.Nome
+
+    
